@@ -2,7 +2,7 @@ import random
 
 class Game:
     def __init__(self):
-        response = str(input("\nWelcome to Harry Potter Simulator! Enter your name and press enter to start your wizarding Journey! " ))
+        response = str(input("\nWelcome to Harry Potter Simulator! Enter your FIRST name only and press enter to start your wizarding Journey! " ))
         self.player_1 = Player(response)
         print(f"\nWelcome {self.player_1.name}! Remember, it's very important that you spell your spells correctly. Who knows what might happen if you don't!")
         input("\n>>>>> Press enter to continue. ")
@@ -22,7 +22,7 @@ class Encounter:
 def final_ranking(score):
     print(f"Thanks for playing! Your final score is {score}. This gives you the title of: ")
     if score == 40:
-        print("Basically Dumbledore but better!")
+        print(f"Basically Dumbledore but better... {game.player_1.name}dore!")
     elif score < 40 and score >= 36:
         print("Hero of Hogwarts!")
     elif score < 35 and score >= 32:
@@ -36,11 +36,12 @@ def final_ranking(score):
     elif score < 16:
         print(f"You're a wizard {game.player_1.name}! Wait, no you're not, you're just {game.player_1.name}!")
     print("\n")
+    input(">>>>> Press enter to end the game.")
 
 # Define all encounters
 encounter_1 = Encounter("\nYou have an intrusive though about Professor Snape and you’d like to write it down, but your quill is on the other side of the room.", 
 ("Accio", "Aguamenti", "Lumos", "Wingardium Leviosa"), 
-("“Accio quill!” you shout. The quill neatly flies into your hand.", 
+("“Accio quill!” you shout. The quill neatly flies into your hand. You scrawl “Snape is a poopy head!” onto your parchment.", 
 "“Aguamenti!” Your goblet of water overflows, floating the quill to your feet. You have the quill but your socks are wet.", 
 "“Lumos!” Your wand lights up the room. Cool! but you’re not sure why you did that.", 
 "“Wingardium Levi-OH-sah!” Your inkwell soars into the air, dumping its contents all over your desk. Nice!" ))
@@ -61,7 +62,7 @@ encounter_3 = Encounter("\n“Muggle cars are so cool!” you think to yourself.
 
 encounter_4 = Encounter("\nYou lay down to take a nap when suddenly, you remember you’re late for Quidditch practice! You rush to the chest at the foot of the bed to collect your gear when you spot a comically small spider on the latch. EEEEEEEE!",
 ("Avada Kedavra", "Confundo", "Wingardium Leviosa", "Accio"),
-("“Avada Kadavra!” A burst of green light shoots from the end of your wand. The spider is immediately dispatched. You turn to your roomate and exclaim “I saved us from the spider!”. Your roommate pees their pants.",
+("“Avada Kedavra!” A burst of green light shoots from the end of your wand. The spider is immediately dispatched. You turn to your roomate and exclaim “I saved us from the spider!”. Your roommate pees their pants.",
 "“Confundo!” The spider furrows it brow and apologizes “Sorry, I must have the wrong house!” and scurries away.",
 "“Wingardium Levi-OH-sah!” The spider soars into the air directly over your head. You quickly reach under the spider to grab your broomstick and run away screaming.",
 "“Accio Spider!” The spider flies off the chest and directly onto your forehead. You pass out from fright and wake up in the medical ward."))
@@ -89,16 +90,16 @@ for encounter in encounter_list:
     choice = input("\nWhich spell do you choose? ").title()
     if choice == encounter.spells[0]:
         print(encounter.outcomes[0])
-        game.player_1.score += 3
+        game.player_1.score += 4
     elif choice == encounter.spells[1]:
         print(encounter.outcomes[1])
-        game.player_1.score += 2
+        game.player_1.score += 3
     elif choice == encounter.spells[2]:
         print(encounter.outcomes[2])
-        game.player_1.score += 1
+        game.player_1.score += 2
     elif choice == encounter.spells[3]:
         print(encounter.outcomes[3])
-        game.player_1.score += 0
+        game.player_1.score += 1
     else:
         choice = random.randint(0,3)
         print(f"You babble incoherently but somehow manage to cast {encounter.spells[choice]}.\n")
