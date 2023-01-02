@@ -36,7 +36,7 @@ def final_ranking(score):
     elif score < 16:
         print(f"You're a wizard {game.player_1.name}! Wait, no you're not, you're just {game.player_1.name}!")
     print("\n")
-    
+
 # Define all encounters
 encounter_1 = Encounter("\nYou have an intrusive though about Professor Snape and you’d like to write it down, but your quill is on the other side of the room.", 
 ("Accio", "Aguamenti", "Lumos", "Wingardium Leviosa"), 
@@ -101,7 +101,7 @@ for encounter in encounter_list:
         game.player_1.score += 0
     else:
         choice = random.randint(0,3)
-        print(f"You babble incoherently but somehow manage to cast {encounter.spells[choice]}.")
+        print(f"You babble incoherently but somehow manage to cast {encounter.spells[choice]}.\n")
         print(encounter.outcomes[choice])
         game.player_1.score += abs(choice - 3)
     input("\n>>>>> Press enter to continue. ")
